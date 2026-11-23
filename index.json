@@ -1,7 +1,7 @@
 {
   "name": "YG 插件文本汉化",
   "id": "com.yg.unity-text-translator",
-  "url": "https://cdn.jsdelivr.net/gh/xinling464/unity-text-translator@main/index.json",
+  "url": "https://raw.githubusercontent.com/xinling464/unity-text-translator/main/index.json",
   "author": {
     "name": "YG"
   },
@@ -25,7 +25,7 @@
             "chinese",
             "vpm"
           ],
-          "url": "https://cdn.jsdelivr.net/gh/xinling464/unity-text-translator@main/com.yg.unity-text-translator-0.1.0.zip",
+          "url": "https://raw.githubusercontent.com/xinling464/unity-text-translator/main/com.yg.unity-text-translator-0.1.0.zip",
           "zipSHA256": "cf73f4d6fd2bd6c98a4779128c85fe1314a0bdd25c5b96f7d87d9a8b3b6cd382",
           "dependencies": {},
           "vpmDependencies": {},
