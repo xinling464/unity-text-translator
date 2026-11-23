@@ -8,11 +8,11 @@
   "packages": {
     "com.yg.unity-text-translator": {
       "versions": {
-        "0.1.0": {
+        "0.1.1": {
           "name": "com.yg.unity-text-translator",
-          "version": "0.1.0",
-          "displayName": "YG 插件文本汉化",
-          "description": "在编辑器里把第三方插件的英文/日文界面文字显示为中文，不修改插件文件。",
+          "version": "0.1.1",
+          "displayName": "团子冲击！",
+          "description": "把 Unity 编辑器里的英文/日文界面文字显示成中文：第三方插件面板、Unity 自带残留英文、右键菜单与顶部菜单，能翻的都翻；不修改插件逻辑，改前自动备份，随时一键还原。",
           "unity": "2022.3",
           "type": "tool",
           "author": {
@@ -23,10 +23,11 @@
             "translation",
             "editor",
             "chinese",
-            "vpm"
+            "vpm",
+            "dango"
           ],
-          "url": "https://raw.githubusercontent.com/xinling464/unity-text-translator/main/com.yg.unity-text-translator-0.1.0.zip",
-          "zipSHA256": "e13b7faf0e1d9240a7441dfc332f335429734205f3519c750d10c81601531a60",
+          "url": "https://raw.githubusercontent.com/xinling464/unity-text-translator/main/com.yg.unity-text-translator-0.1.1.zip",
+          "zipSHA256": "1de7466ae3a80db90f646db3690d7fa7ec5c9adb5e8cfe41e88bdc8e6d09c7e6",
           "dependencies": {},
           "vpmDependencies": {},
           "legacyFolders": {
