@@ -1,0 +1,39 @@
+{
+  "name": "YG 插件文本汉化",
+  "id": "com.yg.unity-text-translator",
+  "url": "https://cdn.jsdelivr.net/gh/xinling464/unity-text-translator@main/index.json",
+  "author": {
+    "name": "YG"
+  },
+  "packages": {
+    "com.yg.unity-text-translator": {
+      "versions": {
+        "0.1.0": {
+          "name": "com.yg.unity-text-translator",
+          "version": "0.1.0",
+          "displayName": "YG 插件文本汉化",
+          "description": "在编辑器里把第三方插件的英文/日文界面文字显示为中文，不修改插件文件。",
+          "unity": "2022.3",
+          "type": "tool",
+          "author": {
+            "name": "YG"
+          },
+          "keywords": [
+            "localization",
+            "translation",
+            "editor",
+            "chinese",
+            "vpm"
+          ],
+          "url": "https://cdn.jsdelivr.net/gh/xinling464/unity-text-translator@main/com.yg.unity-text-translator-0.1.0.zip",
+          "zipSHA256": "9f338e7fd5492b89bb19da36646b9f3b04981d16e1590e79cb02ae579ad82a72",
+          "dependencies": {},
+          "vpmDependencies": {},
+          "legacyFolders": {
+            "com.yg.unity-text-translator": "Packages/com.yg.unity-text-translator"
+          }
+        }
+      }
+    }
+  }
+}
