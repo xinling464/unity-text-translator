@@ -1,0 +1,21 @@
+{
+  "name": "com.yg.unity-text-translator",
+  "version": "0.2.1",
+  "displayName": "团子冲击！",
+  "description": "Unity 编辑器简体中文显示。支持原生层级、项目、形态键中文别名，UnityAgent 中文菜单和中英日定位。仅在编辑器显示译名。",
+  "unity": "2022.3",
+  "type": "tool",
+  "author": {
+    "name": "YG",
+    "url": "https://github.com/xinling464/unity-text-translator"
+  },
+  "keywords": [
+    "localization",
+    "translation",
+    "editor",
+    "chinese",
+    "vpm",
+    "dango"
+  ],
+  "license": "SEE LICENSE IN LICENSE.md"
+}

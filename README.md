@@ -1,92 +1,49 @@
 # 团子冲击！
 
-> 把 Unity 编辑器里的**英文 / 日文界面文字**显示成中文。能翻的都翻，不破坏插件功能，改前自动备份，随时一键还原。
+作者 **YG（@xinling464）** · [官方仓库](https://github.com/xinling464/unity-text-translator)
 
-包 id：`com.yg.unity-text-translator`（id 不变，改名不影响已安装的项目）
+在 Unity 编辑器里将英文和日文界面文字显示成简体中文。适用于 Unity 2022.3 的 VRChat 制作工作流，包含 Modular Avatar、lilToon、VRChat SDK 等工具常见术语。
 
----
-
-## 这是干什么的
-
-你在 Unity 里装了一堆第三方插件（lilToon、Modular Avatar、Poiyomi、VRChat SDK、FaceEmo…），界面上一半英文一半日文，看不懂只能猜。
-
-装了这个包之后：
-
-- 插件 Inspector 里的标签（`Left Eye Bone` → **左眼骨**）
-- 插件的窗口、按钮、提示
-- 右键菜单（`Setup Outfit` → **设置服装 (Setup Outfit)**）
-- 顶部菜单栏里插件注册的项
-- 连 Unity 自己没翻干净的残留英文（`Face Tracking` → **面部追踪**）
-- 以后**新导入的插件**同样自动翻
-
-第一次看到还是英文不要紧，停一两秒会变中文（异步译文回来后重绘），之后就永久记住。
-
----
-
-## 五类文字，四种处理
-
-硬翻会坏功能，所以分层处理：
-
-| 文字类型 | 例子 | 怎么处理 | 风险 |
-|---|---|---|---|
-| **运行时画的** | lilToon 面板、自绘 Inspector、`GUILayout.Label("...")` | Harmony 在 `GUI.Label` / `GUI.Box` / `GUILayout.Label` 绘制前换文本（8 个入口） | 零写入 |
-| **EditorGUI 画的** | `Vector3Field("View Position")`、`PrefixLabel` 这类复合控件 | patch `EditorGUI.LabelField` / `PrefixLabel` 共 8 个重载 | 零写入 |
-| **UI Toolkit 画的** | Modular Avatar、NDMF 的 `.uxml` 面板 | patch `TextElement.text` 的 setter，赋值前换文本 | 零写入 |
-| **编译期定死的菜单** | `[MenuItem("Tools/...")]` | 改源码字符串成 `中文 (English)`，改前留 `.ygzh.bak` | 有写入，可还原 |
-| **包自带词典** | MA 的 `Localization/zh-Hans.json` | 只补「英文有、中文缺」的条 | 有写入，有备份 |
-
-合计 **16 个运行时 patch 点** + 菜单/词典的磁盘层。
-
-**故意不翻**（翻了会断引用）：物体名、资源名、文件路径、Shader 属性名、枚举内部值（`Viseme: sil`、`VRC.v_xx`）。
-
----
-
-## 怎么用
-
-安装后编辑器顶部菜单栏会多一个 **团子冲击！**：
-
-| 菜单项 | 作用 |
-|---|---|
-| **刷新翻译** | 点一次：确保已启用 → 清内存缓存 → 重绘所有面板 → 没翻的词条重新排队 |
-| **暂停翻译** | 停止翻译，再点刷新即恢复 |
-| 打开设置面板… | 开关、翻译后端、缓存统计、一键全翻译本项目插件、一键还原 |
-| 打开数据目录 | `%APPDATA%\YGUnityTranslator`（词典、缓存、待译清单都在） |
-
-翻译后端默认 **MyMemory**（免费、不用 key），也可换成有道 / DeepL / 百度 / 任意 OpenAI 兼容接口。
-
----
+包 ID 为 com.yg.unity-text-translator。
 
 ## 安装
 
-### 走 ALCOM / VCC（推荐）
+- [下载团子冲击！0.2.1 直装包](https://raw.githubusercontent.com/xinling464/unity-text-translator/main/DangoImpact-0.2.1.unitypackage)
+- [下载 0.2.1 ZIP](https://raw.githubusercontent.com/xinling464/unity-text-translator/main/com.yg.unity-text-translator-0.2.1.zip)
 
-1. ALCOM → `Settings` → `Add Repository`，填：
-   ```
-   https://raw.githubusercontent.com/xinling464/unity-text-translator/main/index.json
-   ```
-2. 打开项目 → `Manage Packages` → 勾上 **团子冲击！** → 应用
+- 使用 .unitypackage 时，在 Unity 里选择 Assets → Import Package → Custom Package，或将文件拖入 Project 窗口。项目里只保留一种安装方式。
+- ALCOM / VCC 可以添加 [主仓库索引](https://raw.githubusercontent.com/xinling464/unity-text-translator/main/index.json)，然后在项目的包管理里安装「团子冲击！」。
+- 离线安装时，把对应 ZIP 的内容解压到项目的 Packages/com.yg.unity-text-translator/，确认该目录里直接有 package.json。已有旧版本时，用同一种安装方式升级。
 
-### 手动
+## 使用
 
-把整个包目录放进项目的 `Packages/com.yg.unity-text-translator/`（走 Packages 内嵌，不写 manifest 依赖）。
+1. 打开 Unity 顶部「团子冲击！」菜单。在设置里按项目开启或暂停界面翻译，也可以按插件停用。
+2. 离线词表默认可用。「显示原文」可用 Ctrl/Cmd + Shift + Y 切换，方便跟着原文教程操作。
+3. 在「术语」页查看待校对文字，填写原文和译文、标记忽略、导入或导出 JSON。包专用词条优先于通用词条。
+4. 如需机器翻译，在设置中开启在线翻译，选择服务并用「测试连接」试译固定样例。服务接收待译的界面文字。关掉在线请求后仍可使用离线词表和此前缓存。
+5. 「中英命令搜索」支持按中文、英文或原菜单路径搜索，调用已验证的 Unity 原菜单。
 
----
+## 原生界面别名
 
-## 依赖与数据
+- 层级、项目树／列表／网格和 BlendShape 滑块可显示中文别名，并可单独关闭。悬停或使用「显示原文」查看真实名称。
+- 「中文定位」支持搜索、选中、定位对象和资源，亦可保存单项别名。已保存的场景对象、资源和网格可以持久保存别名。
+- Unity 2022.3.22f1 为原生适配的首个支持版本。缺少适配入口时该处用原文。项目名称和形态键名称留在本地。
+- UnityAgent 0.17.0 安装后，使用「UnityAgent → 中文」运行原命令。Avatar Optimizer 和 Texture Atlas 还要求原插件对应的依赖。
 
-- Unity 2022.3+（Editor 程序集，不参与打包）
-- 零第三方依赖：Harmony 优先复用 NDMF 自带的 `0Harmony`，没有才用包内 `Dependencies~/0Harmony.dll`，**绝不加载第二份**
-- 数据都在 `%APPDATA%\YGUnityTranslator\`：`lexicon.json`（自建词条）、`cache.json`（在线译文缓存）、`unseen.jsonl`（待译清单）、`packages.txt`（包快照）、`catalog-patch.log`（磁盘层日志）
+## 应用和还原目录补丁
 
-## 还原
+「目录补丁」页可先检查每个支持文件的原文和改动，选择要应用的文件。初次打开工程或发现新包时只扫描。包自带词典已有的中文优先保留。
 
-- 菜单/词典改动：设置面板「一键还原」，或删掉所有 `.ygzh.bak` 之外的手改
-- 运行时替换：面板里「停用」立即摘掉全部 Harmony patch
-- 彻底移除：ALCOM 取消勾选，或删 `Packages/com.yg.unity-text-translator`
+「还原」基于变更记录和文件哈希。文件若在汉化后被用户或包更新改过，面板会列出冲突并保留当前文件。旧版 .ygzh.bak 可在内容匹配时还原。
 
-## 已知限制
+## 覆盖范围
 
-- 顶部菜单栏只能靠改 `[MenuItem]` 源码生效（原生 C++ 菜单，hook 拦不到）；**插件包升级会覆盖，需要重跑一次**
-- 免费在线翻译接口有额度限制，大批量词条靠人工词典兜底
-- 极少数把文字画在 Canvas / 自定义 mesh 上的面板，hook 覆盖不到
-- 注释层（改源码里的注释）默认关闭，需要手动触发
+插件处理已识别的编辑器展示文本，输入框内容、对象名、资源路径和项目数据保持原样。部分第三方控件使用自绘或把显示文本兼作程序标识。遇到暂未覆盖的界面，可优先使用插件自带中文、术语词表或命令搜索。
+
+## 从源码打包
+
+使用 PowerShell 7 运行 tools/build-release.ps1。脚本以 package/ 为源，生成版本 ZIP，计算 SHA-256 并更新主仓库与镜像索引。
+
+## 使用授权
+
+个人非商业使用免费。商业使用、转发安装包或改包再发布需先取得作者许可。欢迎分享官方链接。详见[使用授权](LICENSE.md)与[第三方许可](package/THIRD%20PARTY%20NOTICES.md)。

@@ -1,0 +1,19 @@
+{
+  "name": "YGTextTranslator.Editor",
+  "references": [],
+  "includePlatforms": ["Editor"],
+  "allowUnsafeCode": false,
+  "autoReferenced": true,
+  "versionDefines": [
+    {
+      "name": "com.ajisaiflow.unityagent",
+      "expression": "[0.17.0]",
+      "define": "YGT_UNITYAGENT_0_17_0"
+    },
+    {
+      "name": "com.anatawa12.avatar-optimizer",
+      "expression": "",
+      "define": "YGT_AVATAR_OPTIMIZER"
+    }
+  ]
+}

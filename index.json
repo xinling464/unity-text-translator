@@ -3,7 +3,8 @@
   "id": "com.yg.unity-text-translator",
   "url": "https://raw.githubusercontent.com/xinling464/unity-text-translator/main/index.json",
   "author": {
-    "name": "YG"
+    "name": "YG",
+    "url": "https://github.com/xinling464/unity-text-translator"
   },
   "packages": {
     "com.yg.unity-text-translator": {
@@ -33,6 +34,31 @@
           "legacyFolders": {
             "com.yg.unity-text-translator": "Packages/com.yg.unity-text-translator"
           }
+        },
+        "0.2.1": {
+          "name": "com.yg.unity-text-translator",
+          "version": "0.2.1",
+          "displayName": "团子冲击！",
+          "description": "Unity 编辑器简体中文显示。支持原生层级、项目、形态键中文别名，UnityAgent 中文菜单和中英日定位。仅在编辑器显示译名。",
+          "unity": "2022.3",
+          "type": "tool",
+          "author": {
+            "name": "YG",
+            "url": "https://github.com/xinling464/unity-text-translator"
+          },
+          "keywords": [
+            "localization",
+            "translation",
+            "editor",
+            "chinese",
+            "vpm",
+            "dango"
+          ],
+          "license": "SEE LICENSE IN LICENSE.md",
+          "url": "https://raw.githubusercontent.com/xinling464/unity-text-translator/main/com.yg.unity-text-translator-0.2.1.zip",
+          "zipSHA256": "27c932255a8bc2336da43b13dcd1e4b07b815bf8ec18309a0c5c3563e98c271a",
+          "dependencies": {},
+          "vpmDependencies": {}
         }
       }
     }
